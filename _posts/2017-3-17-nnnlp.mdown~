@@ -1,0 +1,49 @@
+---
+layout: "post"
+title: "Neural Networks and Natural Language Processing"
+date: 2017-3-17 7:00:00
+tags: [neural networks, natural language processing]
+---
+
+by [Jungo Kasai](https://jungokasai.github.io/)
+
+### Resources
+- [My Presentation Slides](https://jungokasai.github.io/docs/midterm_nlp.pdf)
+- [Richard Socher's Course at Stanford](http://cs224d.stanford.edu/)
+
+### Introduction
+Neural Networks have been successful in many fields in machine learning such as Computer Vision and Natural Language Processing. In this post, we will go over applications of neural networks in NLP in particular and hopefully give you a big picture for the relationship between neural nets and NLP. 
+Having such a big picture should help us read papers in the literature and understand the context more deeply.
+
+### Challenges and Resolutions 
+Applying neural networks to problems in Computer Vision is oftentimes straightforward. For example, we can represent each image in the [MNIST](http://yann.lecun.com/exdb/mnist/) dataset by a square of 28 by 28 pixels where each pixel takes on a real value. In NLP, there arises an issue how we represent words. With regards to this issue, word embedding techniques come into play.
+Perhaps, the dumbest thing we could do is to represent each word by a one-hot vector where all of the components are zero except one component being one. Namely, we represent each word by a unique index. This representation is not ideal because our vectors would be of the dimension equal to our vocabulary size, and moreover they would not preserve linguistically sensible structures. Since all of the one-hot vectors are orthogonal to each other by design, we would not be able to have any information in the distances among the vectors. Therefore, we want to have dense vector representation of words instead. There have been several techniques to vectorize words in English:
+
+- [WordNet at Princeton, starting in 1985](https://wordnet.princeton.edu/)
+- Global Approach: (Pointwise Mutual Information) Matrix Factorization
+- Local Apporach: [Word2Vec by Mikolov et al. in 2013](https://arxiv.org/pdf/1301.3781.pdf)
+- Global and Local: [GloVe by Pennington, Socher, and Manning](https://nlp.stanford.edu/projects/glove/)
+
+WordNet is analogous to a dictionary in that humans manually annotate relations among words and group synonyms together. The other three methods all utilize English corpora; instead of manually encoding relations among words, we learn relations from text data. 
+
+While the WordNet approach obviously scales badly as we extend it to more words and even other languages, the learning approaches are more flexible. One simple way of learning word vectors from text data is to take some statistics in the data, construct a matrix with each row corresponding to each word and each column corresponding to each "context", and factorize the matrix. The SVD is a common approach to do this. The context can have multiple ways to define, including frequency of co-ocurrence and the positive mutual information, which was proposed by [Church and Hanks 1990](http://dl.acm.org/citation.cfm?id=89095).
+
+On the other hand, the Word2Vec algorithms are based on local information. The intuition is that we construct a shallow neural network that predicts words that appear around the word you are looking at (Skipgram) or the other way around (CBOW). Through this process, we obtain a vector representation for each word. We typically train this network by the stochastic gradient descent algorithm where the learning rate decays.
+
+![skipgram](../images/SKIP.jpeg){:height="36px" width="36px"}
+
+workaround for word embedding. char-based models. CNNs. let the [Japanese](https://speakerdeck.com/bokeneko/tfug-number-3-rettyniokerudeep-learningfalsezi-ran-yan-yu-chu-li-hefalseying-yong-shi-li). one of the exiting areas of research. Tokenization is so cheap in English, in which words are separated by space. word segmentation is a painful task.  
+ 
+### Architecture 
+One way to further proceed with neural-network-based approaches in NLP. 
+Recurrent Neural Networks (RNNs) have been. 
+LSTMS.
+Gated Convolutional Neural Networks.
+Dynamic Tensor
+### Decomposition of Main Problems
+Personally, I believe that decomposition of the main problems will play a key role in the future of neural nets in NLP. Linguistic insights. building blocks.  
+Dependency Parsing and Combinatorial Categorial Grammar (CCG)  Supertagging Parsing. 
+
+### Notes
+In this post, we saw word embeddings as an ingredient of the use of neural nets in NLP. However, word embeddings serve other purposes in NLP and Computational Linguistics, including distributional semantics. 
+

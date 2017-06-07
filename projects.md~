@@ -1,0 +1,12 @@
+---
+title: Projects
+permalink: /projects/
+---
+
+- Tree Adjoining Grammar Parsing
+  * [Midterm Report Slides](/docs/midterm_nlp.pdf)
+  * Recurrent Neural Networks
+  * Attention Learning
+- Dependency Parsing
+- [Multilingual Word Embedding](/docs/multiembed.pdf)
+  * [A TensorFlow Implementation of Skip-gram with Negative Sampling](https://github.com/jungokasai/skipgram)
